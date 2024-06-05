@@ -18,7 +18,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.cp4828_Assignment2_JoshuaCrocker"
     },
     "web": {
       "favicon": "./assets/favicon.png"
