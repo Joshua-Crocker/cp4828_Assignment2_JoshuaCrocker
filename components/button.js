@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Pressable, Text, Image } from 'react-native';
+import { StyleSheet, View, Pressable, Image } from 'react-native';
 
-export default function Button({ imageSource, onPress }) {
+export default function Button({ imageSource, onPress, selected }) {
   return (
-    <View style={styles.buttonContainer}>
+    <View style={[styles.buttonContainer, selected && styles.selected]}>
       <Pressable style={styles.button} onPress={onPress}>
         <Image source={imageSource} style={styles.buttonIcon} />
       </Pressable>
@@ -20,7 +20,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 3,
-    backgroundColor: "#444",
+    backgroundColor: '#444',
+  },
+  selected: {
+    backgroundColor: 'red',
   },
   button: {
     borderRadius: 40,

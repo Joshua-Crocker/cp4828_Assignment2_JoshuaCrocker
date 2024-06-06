@@ -11,8 +11,8 @@ const mlbImage = require('./assets/MLB_Logo.jpg');
 export default function App() {
   const [leagueIndex, setLeagueIndex] = useState(0);
 
-  const handleLeaguePress = () => {
-    setLeagueIndex((prevIndex) => (prevIndex + 1) % sportsLeagues.length);
+  const handleLeaguePress = (index) => {
+    setLeagueIndex(index);
   };
 
   const sportsLeagues = sportsLeaguesData.sportsLeagues;
@@ -23,9 +23,11 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.text}>Top 3 Sport's Leagues</Text>
       <League leagues={sportsLeagues} imageList={imageList} leagueIndex={leagueIndex} />
-      <Button label="Press" onPress={handleLeaguePress} />
-      <Button label="Press" onPress={handleLeaguePress} />
-      <Button label="Press" onPress={handleLeaguePress} />
+      <View style={styles.buttonContainer}>
+        <Button label="Press" imageSource={nhlImage} onPress={() => handleLeaguePress(0)} selected={leagueIndex === 0} />
+        <Button label="Press" imageSource={mlbImage} onPress={() => handleLeaguePress(1)} selected={leagueIndex === 1} />
+        <Button label="Press" imageSource={nflImage} onPress={() => handleLeaguePress(2)} selected={leagueIndex === 2} />
+      </View>
     </View>
   );
 }
@@ -40,5 +42,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     marginTop: 100,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 20,
+    width: '100%',
   },
 });
